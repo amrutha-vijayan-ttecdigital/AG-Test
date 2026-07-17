@@ -1,0 +1,10 @@
+# Agent Changes Log
+
+This file tracks all modifications, updates, and configuration changes made by the AI agent.
+
+2026-07-17 10:08:52 GMT | antigravity:gemini-3.5-flash | CREATE | c:\AntiGravity Projects\BCBS-Demo | Workspace setup and initialization of CX Agent Studio Starter Kit
+  - Cloned the `ces-agent-studio-starter-kit` from GitHub repository `https://github.com/Dig-Voice-AI/Antigravity`.
+  - Initialized a local Git repository and created the initial commit savepoint.
+  - Formulated and verified connection details (`.env`) using active Google Cloud environment variables.
+  - Created initial QA contacts registry at `docs/testdata/qa_contacts.json`.
+  - Completed all verification checklist items for the `agent-onboarding` skill.
