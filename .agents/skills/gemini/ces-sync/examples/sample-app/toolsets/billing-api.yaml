@@ -1,0 +1,36 @@
+openapi: 3.0.0
+info:
+  title: Billing API
+  version: 1.0.0
+  description: Minimal example billing backend. Point servers.url at your own Cloud Run host.
+servers:
+  - url: https://billing-api.example.run.app
+paths:
+  /accounts/{accountId}/summary:
+    get:
+      operationId: get_account_summary
+      summary: Return a compact summary of an account's recent charges.
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Account summary
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accountId: { type: string }
+                  balanceDue: { type: number }
+                  lineItems:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        date: { type: string }
+                        description: { type: string }
+                        amount: { type: number }

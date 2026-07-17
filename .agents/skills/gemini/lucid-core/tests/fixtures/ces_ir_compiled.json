@@ -1,0 +1,850 @@
+{
+  "schemaVersion": "ces-design-ir/v1",
+  "application": {
+    "id": "doc_ces_test",
+    "displayName": "CES Test Document",
+    "source": {
+      "documentId": "",
+      "pageId": "",
+      "shapeIds": [],
+      "lineIds": [],
+      "textAreaIds": [],
+      "customDataKeys": []
+    },
+    "evidence": [],
+    "status": "explicit",
+    "rootAgentId": "agent_root",
+    "globalInstructionRefs": [],
+    "defaultModelSettings": {},
+    "toolExecutionMode": "unspecified",
+    "channelProfiles": [],
+    "languageLocale": "",
+    "variableDeclarations": [],
+    "loggingRedactionRequirements": "",
+    "evaluationThresholdRefs": [],
+    "humanEscalationTargets": []
+  },
+  "agents": [
+    {
+      "id": "agent_root",
+      "displayName": "Root Agent",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [
+          "agent_root"
+        ],
+        "lineIds": [],
+        "textAreaIds": [],
+        "customDataKeys": [
+          "ces.id",
+          "ces.kind",
+          "ces.is_root"
+        ]
+      },
+      "evidence": [
+        {
+          "kind": "custom_data",
+          "value": "ces.kind = agent",
+          "confidence": 1.0
+        }
+      ],
+      "status": "explicit",
+      "kind": "llm_agent",
+      "parentAgentId": null,
+      "childAgentIds": [
+        "agent_billing"
+      ],
+      "isRoot": true,
+      "purpose": "",
+      "inScopeGoals": [],
+      "outOfScopeGoals": [],
+      "responsibilities": [],
+      "inputs": [],
+      "outputs": [],
+      "entryAssumptions": [],
+      "completionCriteria": [],
+      "handoffCriteria": [],
+      "attachedTools": [],
+      "attachedAgentsAsTools": [],
+      "callbacks": [],
+      "guardrails": [],
+      "variablesRead": [],
+      "variablesWritten": [],
+      "modelOverride": null,
+      "channelInstructionRefs": [],
+      "humanEscalationBehavior": ""
+    },
+    {
+      "id": "agent_billing",
+      "displayName": "Billing Agent",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [
+          "agent_billing"
+        ],
+        "lineIds": [],
+        "textAreaIds": [],
+        "customDataKeys": [
+          "ces.id",
+          "ces.kind"
+        ]
+      },
+      "evidence": [
+        {
+          "kind": "custom_data",
+          "value": "ces.kind = agent",
+          "confidence": 1.0
+        }
+      ],
+      "status": "explicit",
+      "kind": "llm_agent",
+      "parentAgentId": "agent_root",
+      "childAgentIds": [],
+      "isRoot": false,
+      "purpose": "",
+      "inScopeGoals": [],
+      "outOfScopeGoals": [],
+      "responsibilities": [],
+      "inputs": [],
+      "outputs": [],
+      "entryAssumptions": [],
+      "completionCriteria": [],
+      "handoffCriteria": [],
+      "attachedTools": [],
+      "attachedAgentsAsTools": [],
+      "callbacks": [],
+      "guardrails": [],
+      "variablesRead": [],
+      "variablesWritten": [],
+      "modelOverride": null,
+      "channelInstructionRefs": [],
+      "humanEscalationBehavior": ""
+    }
+  ],
+  "tools": [
+    {
+      "id": "tool_lookup",
+      "displayName": "",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [
+          "tool_lookup"
+        ],
+        "lineIds": [],
+        "textAreaIds": [],
+        "customDataKeys": [
+          "ces.id",
+          "ces.kind"
+        ]
+      },
+      "evidence": [
+        {
+          "kind": "custom_data",
+          "value": "ces.kind = tool",
+          "confidence": 1.0
+        }
+      ],
+      "status": "explicit",
+      "toolKind": "openapi",
+      "description": "",
+      "agents": [],
+      "inputSchema": null,
+      "outputSchema": null,
+      "executionType": "unknown",
+      "sideEffectClass": "unknown",
+      "authRequirement": "",
+      "confirmationRequirement": false,
+      "idempotencyStrategy": "",
+      "timeoutRetryPolicy": "",
+      "pendingResponseContract": "",
+      "errorResultContract": "",
+      "sensitiveData": [],
+      "callbacks": [],
+      "mockStrategy": ""
+    },
+    {
+      "id": "tool_payment_update",
+      "displayName": "",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [
+          "tool_payment_update"
+        ],
+        "lineIds": [],
+        "textAreaIds": [],
+        "customDataKeys": [
+          "ces.id",
+          "ces.kind",
+          "ces.confirmation_requirement"
+        ]
+      },
+      "evidence": [
+        {
+          "kind": "custom_data",
+          "value": "ces.kind = tool",
+          "confidence": 1.0
+        }
+      ],
+      "status": "explicit",
+      "toolKind": "openapi",
+      "description": "",
+      "agents": [],
+      "inputSchema": null,
+      "outputSchema": null,
+      "executionType": "unknown",
+      "sideEffectClass": "unknown",
+      "authRequirement": "",
+      "confirmationRequirement": true,
+      "idempotencyStrategy": "",
+      "timeoutRetryPolicy": "",
+      "pendingResponseContract": "",
+      "errorResultContract": "",
+      "sensitiveData": [],
+      "callbacks": [],
+      "mockStrategy": ""
+    }
+  ],
+  "callbacks": [
+    {
+      "id": "callback_auth",
+      "displayName": "",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [
+          "callback_auth"
+        ],
+        "lineIds": [],
+        "textAreaIds": [],
+        "customDataKeys": [
+          "ces.id",
+          "ces.kind",
+          "ces.callback_type"
+        ]
+      },
+      "evidence": [
+        {
+          "kind": "custom_data",
+          "value": "ces.kind = callback",
+          "confidence": 1.0
+        }
+      ],
+      "status": "explicit",
+      "callbackStage": "before_tool_callback",
+      "scope": "",
+      "purpose": "",
+      "variablesRead": [],
+      "variablesWritten": [],
+      "skipReplaceBehavior": "",
+      "validationBehavior": "",
+      "authBehavior": "",
+      "modificationBehavior": "",
+      "orderingIndex": 0,
+      "failureBehavior": "",
+      "codeRef": ""
+    }
+  ],
+  "guardrails": [
+    {
+      "id": "guardrail_safety",
+      "displayName": "",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [
+          "guardrail_safety"
+        ],
+        "lineIds": [],
+        "textAreaIds": [],
+        "customDataKeys": [
+          "ces.id",
+          "ces.kind",
+          "ces.guardrail_scope"
+        ]
+      },
+      "evidence": [
+        {
+          "kind": "custom_data",
+          "value": "ces.kind = guardrail",
+          "confidence": 1.0
+        }
+      ],
+      "status": "explicit",
+      "kind": "",
+      "scope": "",
+      "triggerDefinition": "",
+      "outcome": "block",
+      "outcomeTarget": "",
+      "severity": "",
+      "variablesCaptured": []
+    }
+  ],
+  "variables": [
+    {
+      "id": "variable_token",
+      "displayName": "variable_token",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [
+          "variable_token"
+        ],
+        "lineIds": [],
+        "textAreaIds": [],
+        "customDataKeys": [
+          "ces.id",
+          "ces.kind",
+          "ces.variable_owner"
+        ]
+      },
+      "evidence": [
+        {
+          "kind": "custom_data",
+          "value": "ces.kind = variable",
+          "confidence": 1.0
+        }
+      ],
+      "status": "explicit",
+      "type": "string",
+      "classification": "dynamic",
+      "ownerAgentId": null,
+      "readers": [],
+      "writers": [],
+      "sourceOfTruth": "",
+      "defaultValue": null,
+      "sessionLifetime": "",
+      "sensitivity": "",
+      "validationRules": [],
+      "redactionExpectations": "",
+      "remoteMappings": {}
+    }
+  ],
+  "remotes": [
+    {
+      "id": "dfcx_agent",
+      "displayName": "",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [
+          "dfcx_agent"
+        ],
+        "lineIds": [],
+        "textAreaIds": [],
+        "customDataKeys": [
+          "ces.id",
+          "ces.kind"
+        ]
+      },
+      "evidence": [
+        {
+          "kind": "custom_data",
+          "value": "ces.kind = remote_dialogflow_agent",
+          "confidence": 1.0
+        }
+      ],
+      "status": "explicit",
+      "remoteAgentResource": "",
+      "startingFlow": "",
+      "environmentVersion": "",
+      "inputVariables": [],
+      "outputVariables": [],
+      "languageCodeVariable": "",
+      "ownershipSemantics": "",
+      "returnBehavior": "",
+      "errorTimeoutBehavior": ""
+    }
+  ],
+  "evaluations": [],
+  "traces": [],
+  "relationships": [
+    {
+      "id": "line_parent",
+      "displayName": "parent",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [],
+        "lineIds": [
+          "line_parent"
+        ],
+        "textAreaIds": [],
+        "customDataKeys": []
+      },
+      "evidence": [
+        {
+          "kind": "line_label",
+          "value": "parent",
+          "confidence": 0.9
+        }
+      ],
+      "status": "explicit",
+      "sourceId": "agent_root",
+      "targetId": "agent_billing",
+      "relationType": "PARENT_OF",
+      "modalGuarantee": "MAY",
+      "controlAuthority": "UNKNOWN",
+      "triggerCondition": "parent",
+      "ownershipSemantics": "",
+      "returnBehavior": "",
+      "syncBehavior": "synchronous",
+      "failureTimeoutBehavior": "",
+      "confidence": 1.0
+    },
+    {
+      "id": "line_handoff_billing",
+      "displayName": "[MAY][MODEL] hand off when billing goal; returns when resolved",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [],
+        "lineIds": [
+          "line_handoff_billing"
+        ],
+        "textAreaIds": [],
+        "customDataKeys": []
+      },
+      "evidence": [
+        {
+          "kind": "line_label",
+          "value": "[MAY][MODEL] hand off when billing goal; returns when resolved",
+          "confidence": 0.9
+        }
+      ],
+      "status": "explicit",
+      "sourceId": "agent_root",
+      "targetId": "agent_billing",
+      "relationType": "MAY_HANDOFF_TO",
+      "modalGuarantee": "MAY",
+      "controlAuthority": "MODEL_INSTRUCTION",
+      "triggerCondition": "hand off when billing goal; returns when resolved",
+      "ownershipSemantics": "",
+      "returnBehavior": "",
+      "syncBehavior": "synchronous",
+      "failureTimeoutBehavior": "",
+      "confidence": 1.0
+    },
+    {
+      "id": "line_calls_lookup",
+      "displayName": "calls tool",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [],
+        "lineIds": [
+          "line_calls_lookup"
+        ],
+        "textAreaIds": [],
+        "customDataKeys": []
+      },
+      "evidence": [
+        {
+          "kind": "line_label",
+          "value": "calls tool",
+          "confidence": 0.9
+        }
+      ],
+      "status": "explicit",
+      "sourceId": "agent_billing",
+      "targetId": "tool_lookup",
+      "relationType": "CALLS_TOOL",
+      "modalGuarantee": "MAY",
+      "controlAuthority": "UNKNOWN",
+      "triggerCondition": "calls tool",
+      "ownershipSemantics": "",
+      "returnBehavior": "",
+      "syncBehavior": "synchronous",
+      "failureTimeoutBehavior": "",
+      "confidence": 1.0
+    },
+    {
+      "id": "line_calls_write",
+      "displayName": "[MUST][RULE] calls tool",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [],
+        "lineIds": [
+          "line_calls_write"
+        ],
+        "textAreaIds": [],
+        "customDataKeys": []
+      },
+      "evidence": [
+        {
+          "kind": "line_label",
+          "value": "[MUST][RULE] calls tool",
+          "confidence": 0.9
+        }
+      ],
+      "status": "explicit",
+      "sourceId": "agent_billing",
+      "targetId": "tool_payment_update",
+      "relationType": "CALLS_TOOL",
+      "modalGuarantee": "MUST",
+      "controlAuthority": "DETERMINISTIC_HANDOFF_RULE",
+      "triggerCondition": "calls tool",
+      "ownershipSemantics": "",
+      "returnBehavior": "",
+      "syncBehavior": "synchronous",
+      "failureTimeoutBehavior": "",
+      "confidence": 1.0
+    },
+    {
+      "id": "line_forbidden",
+      "displayName": "[MUST NOT] call update_payment before confirmation",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [],
+        "lineIds": [
+          "line_forbidden"
+        ],
+        "textAreaIds": [],
+        "customDataKeys": []
+      },
+      "evidence": [
+        {
+          "kind": "line_label",
+          "value": "[MUST NOT] call update_payment before confirmation",
+          "confidence": 0.9
+        }
+      ],
+      "status": "explicit",
+      "sourceId": "agent_root",
+      "targetId": "tool_payment_update",
+      "relationType": "FORBIDDEN_TRANSITION",
+      "modalGuarantee": "MUST_NOT",
+      "controlAuthority": "UNKNOWN",
+      "triggerCondition": "call update_payment before confirmation",
+      "ownershipSemantics": "",
+      "returnBehavior": "",
+      "syncBehavior": "synchronous",
+      "failureTimeoutBehavior": "",
+      "confidence": 1.0
+    },
+    {
+      "id": "line_observed",
+      "displayName": "[OBSERVED] simulator trace",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [],
+        "lineIds": [
+          "line_observed"
+        ],
+        "textAreaIds": [],
+        "customDataKeys": []
+      },
+      "evidence": [
+        {
+          "kind": "line_label",
+          "value": "[OBSERVED] simulator trace",
+          "confidence": 0.9
+        }
+      ],
+      "status": "observed",
+      "sourceId": "agent_root",
+      "targetId": "agent_billing",
+      "relationType": "MAY_HANDOFF_TO",
+      "modalGuarantee": "MAY",
+      "controlAuthority": "UNKNOWN",
+      "triggerCondition": "simulator trace",
+      "ownershipSemantics": "",
+      "returnBehavior": "",
+      "syncBehavior": "synchronous",
+      "failureTimeoutBehavior": "",
+      "confidence": 1.0
+    }
+  ],
+  "handoffs": [
+    {
+      "id": "line_handoff_billing-handoff",
+      "displayName": "[MAY][MODEL] hand off when billing goal; returns when resolved",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [],
+        "lineIds": [
+          "line_handoff_billing"
+        ],
+        "textAreaIds": [],
+        "customDataKeys": []
+      },
+      "evidence": [],
+      "status": "explicit",
+      "sourceAgentId": "agent_root",
+      "targetAgentId": "agent_billing",
+      "direction": "forward",
+      "mechanism": "model_instruction",
+      "forceBlockBehavior": "",
+      "condition": "hand off when billing goal; returns when resolved",
+      "requiredVariables": [],
+      "dataPassed": [],
+      "postTransferOwner": "",
+      "returnCondition": "resolved",
+      "returnTargetAgentId": null,
+      "retryLoopPolicy": "",
+      "failureBehavior": ""
+    },
+    {
+      "id": "line_observed-handoff",
+      "displayName": "[OBSERVED] simulator trace",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [],
+        "lineIds": [
+          "line_observed"
+        ],
+        "textAreaIds": [],
+        "customDataKeys": []
+      },
+      "evidence": [],
+      "status": "observed",
+      "sourceAgentId": "agent_root",
+      "targetAgentId": "agent_billing",
+      "direction": "forward",
+      "mechanism": "model_instruction",
+      "forceBlockBehavior": "",
+      "condition": "simulator trace",
+      "requiredVariables": [],
+      "dataPassed": [],
+      "postTransferOwner": "",
+      "returnCondition": "",
+      "returnTargetAgentId": null,
+      "retryLoopPolicy": "",
+      "failureBehavior": ""
+    }
+  ],
+  "agentsAsTools": [],
+  "diagnostics": [
+    {
+      "code": "CES002",
+      "severity": "warning",
+      "message": "Agent 'agent_root' is missing purpose or scope goals.",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [
+          "agent_root"
+        ],
+        "lineIds": [],
+        "textAreaIds": [],
+        "customDataKeys": [
+          "ces.id",
+          "ces.kind",
+          "ces.is_root"
+        ]
+      },
+      "remediation": "Populate the agent shape text with 'Purpose:' and 'In Scope:' / 'Out of Scope:' lists."
+    },
+    {
+      "code": "CES002",
+      "severity": "warning",
+      "message": "Agent 'agent_billing' is missing purpose or scope goals.",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [
+          "agent_billing"
+        ],
+        "lineIds": [],
+        "textAreaIds": [],
+        "customDataKeys": [
+          "ces.id",
+          "ces.kind"
+        ]
+      },
+      "remediation": "Populate the agent shape text with 'Purpose:' and 'In Scope:' / 'Out of Scope:' lists."
+    },
+    {
+      "code": "CES003",
+      "severity": "warning",
+      "message": "Agent 'agent_billing' has no completion, return, or escalation behavior.",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [
+          "agent_billing"
+        ],
+        "lineIds": [],
+        "textAreaIds": [],
+        "customDataKeys": [
+          "ces.id",
+          "ces.kind"
+        ]
+      },
+      "remediation": "Specify 'Completion:', 'Handoff:', or 'Exit:' behavior on the agent shape text."
+    },
+    {
+      "code": "CES019",
+      "severity": "warning",
+      "message": "MUST/MUST_NOT claim on connector from 'agent_root' lacks deterministic enforcement.",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [],
+        "lineIds": [
+          "line_forbidden"
+        ],
+        "textAreaIds": [],
+        "customDataKeys": []
+      },
+      "remediation": "Specify rule, callback, or guardrail authority (e.g. '[MUST][RULE]') to enforce the contract."
+    },
+    {
+      "code": "CES024",
+      "severity": "warning",
+      "message": "Observed trace connector from 'agent_root' to 'agent_billing' is represented as design guarantee.",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [],
+        "lineIds": [
+          "line_observed"
+        ],
+        "textAreaIds": [],
+        "customDataKeys": []
+      },
+      "remediation": "Mark trace connectors explicitly as [OBSERVED] or move them to a separate page/layer."
+    },
+    {
+      "code": "CES007",
+      "severity": "warning",
+      "message": "Handoff from 'agent_root' to 'agent_billing' lacks return behavior.",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [],
+        "lineIds": [
+          "line_observed"
+        ],
+        "textAreaIds": [],
+        "customDataKeys": []
+      },
+      "remediation": "Clarify return behavior in label (e.g., 'returns when resolved')."
+    },
+    {
+      "code": "CES011",
+      "severity": "error",
+      "message": "Tool 'tool_lookup' description is missing.",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [
+          "tool_lookup"
+        ],
+        "lineIds": [],
+        "textAreaIds": [],
+        "customDataKeys": [
+          "ces.id",
+          "ces.kind"
+        ]
+      },
+      "remediation": "Provide a description within the tool shape text."
+    },
+    {
+      "code": "CES015",
+      "severity": "warning",
+      "message": "Tool 'tool_lookup' is missing timeout retry or error handling details.",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [
+          "tool_lookup"
+        ],
+        "lineIds": [],
+        "textAreaIds": [],
+        "customDataKeys": [
+          "ces.id",
+          "ces.kind"
+        ]
+      },
+      "remediation": "Specify 'Timeout:' or 'Error Handling:' inside the tool shape text."
+    },
+    {
+      "code": "CES011",
+      "severity": "error",
+      "message": "Tool 'tool_payment_update' description is missing.",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [
+          "tool_payment_update"
+        ],
+        "lineIds": [],
+        "textAreaIds": [],
+        "customDataKeys": [
+          "ces.id",
+          "ces.kind",
+          "ces.confirmation_requirement"
+        ]
+      },
+      "remediation": "Provide a description within the tool shape text."
+    },
+    {
+      "code": "CES015",
+      "severity": "warning",
+      "message": "Tool 'tool_payment_update' is missing timeout retry or error handling details.",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [
+          "tool_payment_update"
+        ],
+        "lineIds": [],
+        "textAreaIds": [],
+        "customDataKeys": [
+          "ces.id",
+          "ces.kind",
+          "ces.confirmation_requirement"
+        ]
+      },
+      "remediation": "Specify 'Timeout:' or 'Error Handling:' inside the tool shape text."
+    },
+    {
+      "code": "CES022",
+      "severity": "warning",
+      "message": "Sensitive variable 'variable_token' lacks redaction or logging guidance.",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [
+          "variable_token"
+        ],
+        "lineIds": [],
+        "textAreaIds": [],
+        "customDataKeys": [
+          "ces.id",
+          "ces.kind",
+          "ces.variable_owner"
+        ]
+      },
+      "remediation": "Specify log redaction expectations for the sensitive variable."
+    },
+    {
+      "code": "CES023",
+      "severity": "error",
+      "message": "Remote DFCX flow agent 'dfcx_agent' lacks input/output mapping.",
+      "source": {
+        "documentId": "doc_ces_test",
+        "pageId": "page_1",
+        "shapeIds": [
+          "dfcx_agent"
+        ],
+        "lineIds": [],
+        "textAreaIds": [],
+        "customDataKeys": [
+          "ces.id",
+          "ces.kind"
+        ]
+      },
+      "remediation": "Define the inputs/outputs mapped to the black-box Dialogflow agent."
+    }
+  ]
+}

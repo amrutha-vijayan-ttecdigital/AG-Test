@@ -1,0 +1,8 @@
+{
+  "displayName": "Billing",
+  "description": "Answers billing questions by looking up the caller's account, then explains charges or routes to a human for disputes.",
+  "instruction": "instruction.md",
+  "childAgents": [],
+  "toolsets": ["billing-api"],
+  "tools": ["@builtin:end_session"]
+}

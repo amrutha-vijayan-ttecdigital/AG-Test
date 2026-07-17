@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Test mermaid_to_lucid on missing file",
+    "command": "python3 agentsettings/skills/mermaid-to-lucid/scripts/mermaid_to_lucid.py nonexistent.mmd",
+    "expected_output_includes": "File not found"
+  },
+  {
+    "name": "Test mermaid_to_lucid on simple valid graph",
+    "setup": "echo 'graph TD\\nA-->B\\nB-->C' > /tmp/test_eval.mmd",
+    "command": "python3 agentsettings/skills/mermaid-to-lucid/scripts/mermaid_to_lucid.py /tmp/test_eval.mmd",
+    "expected_output_includes": "Success! Document created",
+    "teardown": "rm /tmp/test_eval.mmd"
+  }
+]

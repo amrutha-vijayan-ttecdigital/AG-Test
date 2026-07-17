@@ -1,0 +1,13 @@
+{
+  "displayName": "Router",
+  "description": "Greets the caller, classifies the request, and delegates to the right specialized sub-agent.",
+  "instruction": "instruction.md",
+  "childAgents": ["billing"],
+  "toolsets": [],
+  "tools": ["@builtin:end_session"],
+  "callbacks": {
+    "beforeModelCallbacks": [
+      { "description": "Stamp the current date into session state.", "file": "stamp_date_before_model.py" }
+    ]
+  }
+}

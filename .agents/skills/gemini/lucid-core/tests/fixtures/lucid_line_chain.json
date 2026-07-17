@@ -1,0 +1,94 @@
+{
+  "id": "11111111-2222-3333-4444-555555555555",
+  "title": "Fixture Design",
+  "product": "lucidchart",
+  "accountId": 123,
+  "data": {
+    "collections": []
+  },
+  "pages": [
+    {
+      "id": "pageA",
+      "title": "Main",
+      "index": 0,
+      "customData": [],
+      "linkedData": [],
+      "items": {
+        "shapes": [
+          {
+            "id": "a-b",
+            "class": "Terminator",
+            "textAreas": [{"label": "Text", "text": "Start"}],
+            "customData": [],
+            "linkedData": []
+          },
+          {
+            "id": "a_b",
+            "class": "DecisionDiamond",
+            "textAreas": [{"label": "Text", "text": "Expected Response?"}],
+            "customData": [],
+            "linkedData": []
+          },
+          {
+            "id": "done",
+            "class": "ProcessBlock",
+            "textAreas": [{"label": "Text", "text": "Collect account number and call webhook get_account without truncating this long label"}],
+            "customData": [],
+            "linkedData": []
+          },
+          {
+            "id": "note1",
+            "class": "StickyNote",
+            "textAreas": [{"label": "Text", "text": "Reviewer note"}],
+            "customData": [],
+            "linkedData": []
+          },
+          {
+            "id": "data1",
+            "class": "PaperTape",
+            "textAreas": [{"label": "Text", "text": "Payload sample"}],
+            "customData": [],
+            "linkedData": []
+          }
+        ],
+        "lines": [
+          {
+            "id": "L1",
+            "endpoint1": {"style": "None", "connectedTo": "a-b"},
+            "endpoint2": {"style": "Arrow", "connectedTo": "L2"},
+            "textAreas": [{"label": "Text", "text": "caller says yes"}],
+            "customData": [],
+            "linkedData": []
+          },
+          {
+            "id": "L2",
+            "endpoint1": {"style": "None", "connectedTo": "L1"},
+            "endpoint2": {"style": "Arrow", "connectedTo": "a_b"},
+            "textAreas": [],
+            "customData": [],
+            "linkedData": []
+          },
+          {
+            "id": "L3",
+            "endpoint1": {"style": "None", "connectedTo": "a_b"},
+            "endpoint2": {"style": "Arrow", "connectedTo": "done"},
+            "textAreas": [{"label": "Text", "text": "$session.params.accountNumber != null"}],
+            "customData": [],
+            "linkedData": []
+          },
+          {
+            "id": "dangling",
+            "endpoint1": {"style": "None", "connectedTo": "done"},
+            "endpoint2": {"style": "Arrow", "connectedTo": null},
+            "textAreas": [],
+            "customData": [],
+            "linkedData": []
+          }
+        ],
+        "groups": [{"id": "group1", "members": ["a-b", "L1"], "customData": [], "linkedData": []}],
+        "layers": [{"id": "layer1", "name": "Layer 1", "members": ["a-b", "a_b", "done"], "customData": [], "linkedData": []}]
+      }
+    }
+  ]
+}
+

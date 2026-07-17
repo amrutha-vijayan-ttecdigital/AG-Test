@@ -1,0 +1,31 @@
+{
+  "description": "Voice smoke pack for the sample app. Run against a deployment (callbacks/transfers only apply when deployed).",
+  "testCases": [
+    {
+      "displayName": "voice_billing_route",
+      "notes": "Spoken billing intent should reach the billing agent.",
+      "startText": "<event>session start</event>",
+      "startExpect": { "keywords": ["help"] },
+      "turns": [
+        {
+          "user": "I have a question about a charge on my bill",
+          "expect": {
+            "Agent route path": "billing",
+            "transcript_contains": "charge"
+          }
+        }
+      ]
+    },
+    {
+      "displayName": "voice_seeded_caller",
+      "notes": "Seed a caller id as a session variable, then ask a question by voice.",
+      "seedVariables": { "callerId": "+15551234567" },
+      "turns": [
+        {
+          "user": "what's my balance",
+          "expect": { "Agent route path": "billing" }
+        }
+      ]
+    }
+  ]
+}

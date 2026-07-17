@@ -1,0 +1,42 @@
+{
+  "description": "Routing smoke pack for the sample app. Each case opens the session, then checks where the caller's first real intent lands.",
+  "startUtterance": "<event>session start</event>",
+  "testCases": [
+    {
+      "displayName": "route_billing_charge",
+      "notes": "A charge question should reach the billing agent and look up the account.",
+      "turns": [
+        {
+          "user": "I have a question about a charge on my account",
+          "expect": {
+            "Agent route path": "router -> billing",
+            "expected_tool_invocation": "get_account_summary"
+          }
+        }
+      ]
+    },
+    {
+      "displayName": "route_billing_dispute_param",
+      "notes": "An explicit dispute should set callType before any handoff.",
+      "turns": [
+        {
+          "user": "I want to formally dispute a charge, this is wrong",
+          "expect": {
+            "Agent route path": "billing",
+            "params": { "callType": "billing_dispute" }
+          }
+        }
+      ]
+    },
+    {
+      "displayName": "greeting_is_spoken",
+      "notes": "The opening turn should greet the caller.",
+      "turns": [
+        {
+          "user": "hello?",
+          "expect": { "contains": ["help"] }
+        }
+      ]
+    }
+  ]
+}

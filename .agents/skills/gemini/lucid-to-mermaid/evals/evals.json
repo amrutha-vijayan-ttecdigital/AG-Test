@@ -1,0 +1,12 @@
+{
+  "skill_name": "lucid-to-mermaid",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Extract the 'Continue With System' and 'Hold On' flows into docs/diagrams from this Lucidchart board: https://lucid.app/lucidchart/9fb77fff-ad41-4991-8ef3-1840b84c4455",
+      "expected_output": "The two target diagrams correctly converted to mermaid.live format.",
+      "files": [],
+      "assertions": []
+    }
+  ]
+}

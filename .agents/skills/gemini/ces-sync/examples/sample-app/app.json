@@ -1,0 +1,13 @@
+{
+  "_comment": "App-level config applied on a FULL sync. rootAgent is an agent slug from agents/.",
+  "rootAgent": "router",
+  "modelSettings": { "model": "gemini-2.5-flash" },
+  "globalInstruction": "You are a helpful, concise voice assistant. Speak in short, natural sentences. Never claim to be human. Defer to tool output for facts.",
+  "variableDeclarations": [
+    { "name": "customerName", "description": "Caller's name once identified.", "schema": { "type": "STRING", "description": "Caller's name once identified." } },
+    { "name": "callType", "description": "Routing/handoff call type set before transfer.", "schema": { "type": "STRING", "description": "Routing/handoff call type set before transfer." } }
+  ],
+  "loggingSettings": {
+    "cloudLoggingSettings": { "enableCloudLogging": true }
+  }
+}

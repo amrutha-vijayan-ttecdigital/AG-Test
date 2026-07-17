@@ -1,0 +1,7 @@
+# Voice (BidiRunSession) test runner dependencies.
+websockets>=12.0
+httpx>=0.27.0
+# Optional TTS for --mode voice (text mode needs neither):
+#   pip install gtts          # cross-platform; also needs ffmpeg on PATH
+#   (macOS `say` works out of the box; ffmpeg still required for resampling)
+gtts>=2.5.0

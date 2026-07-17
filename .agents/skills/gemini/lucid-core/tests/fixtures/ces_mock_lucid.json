@@ -1,0 +1,179 @@
+{
+  "title": "CES Test Document",
+  "product": "lucidchart",
+  "accountId": "acc_123",
+  "id": "doc_ces_test",
+  "pages": [
+    {
+      "id": "page_1",
+      "title": "Main Flow",
+      "customData": [],
+      "linkedData": [],
+      "items": {
+        "shapes": [
+          {
+            "id": "agent_root",
+            "displayName": "Root Agent",
+            "class": "Card",
+            "textAreas": [
+              {
+                "text": "Root Agent\nPurpose: Route user intents.\nIn Scope: Billing, Support\nExit: human_escalate"
+              }
+            ],
+            "customData": [
+              { "key": "ces.id", "value": "agent_root" },
+              { "key": "ces.kind", "value": "agent" },
+              { "key": "ces.is_root", "value": "true" }
+            ]
+          },
+          {
+            "id": "agent_billing",
+            "displayName": "Billing Agent",
+            "class": "Card",
+            "textAreas": [
+              {
+                "text": "Billing Agent\nPurpose: Handle payments.\nIn Scope: payment_update\nCompletion: billing completed"
+              }
+            ],
+            "customData": [
+              { "key": "ces.id", "value": "agent_billing" },
+              { "key": "ces.kind", "value": "agent" }
+            ]
+          },
+          {
+            "id": "tool_lookup",
+            "displayName": "Lookup Tool",
+            "class": "Database",
+            "textAreas": [
+              {
+                "text": "Lookup Tool\nDescription: Reads account data."
+              }
+            ],
+            "customData": [
+              { "key": "ces.id", "value": "tool_lookup" },
+              { "key": "ces.kind", "value": "tool" }
+            ]
+          },
+          {
+            "id": "tool_payment_update",
+            "displayName": "Payment Update Tool",
+            "class": "Database",
+            "textAreas": [
+              {
+                "text": "Payment Update Tool\nDescription: Writes payment methods.\nConfirmation: required\nIdempotency: unique_token"
+              }
+            ],
+            "customData": [
+              { "key": "ces.id", "value": "tool_payment_update" },
+              { "key": "ces.kind", "value": "tool" },
+              { "key": "ces.confirmation_requirement", "value": "true" }
+            ]
+          },
+          {
+            "id": "callback_auth",
+            "displayName": "Authorize Payment Callback",
+            "class": "Shield",
+            "textAreas": [
+              {
+                "text": "Authorize Payment Callback\nPurpose: Check authorization credentials before tool write."
+              }
+            ],
+            "customData": [
+              { "key": "ces.id", "value": "callback_auth" },
+              { "key": "ces.kind", "value": "callback" },
+              { "key": "ces.callback_type", "value": "before_tool_callback" }
+            ]
+          },
+          {
+            "id": "guardrail_safety",
+            "displayName": "Safety Guardrail",
+            "class": "Shield",
+            "textAreas": [
+              {
+                "text": "Safety Guardrail\nTrigger: PII leaks"
+              }
+            ],
+            "customData": [
+              { "key": "ces.id", "value": "guardrail_safety" },
+              { "key": "ces.kind", "value": "guardrail" },
+              { "key": "ces.guardrail_scope", "value": "block" }
+            ]
+          },
+          {
+            "id": "variable_token",
+            "displayName": "session_token",
+            "class": "Terminator",
+            "textAreas": [
+              {
+                "text": "session_token"
+              }
+            ],
+            "customData": [
+              { "key": "ces.id", "value": "variable_token" },
+              { "key": "ces.kind", "value": "variable" },
+              { "key": "ces.variable_owner", "value": "string" }
+            ]
+          },
+          {
+            "id": "dfcx_agent",
+            "displayName": "Remote DFCX Flow",
+            "class": "ExternalCard",
+            "textAreas": [
+              {
+                "text": "Remote DFCX Flow\nPurpose: Run legacy flow\nInputs: session_token\nOutputs: status_code"
+              }
+            ],
+            "customData": [
+              { "key": "ces.id", "value": "dfcx_agent" },
+              { "key": "ces.kind", "value": "remote_dialogflow_agent" }
+            ]
+          }
+        ],
+        "lines": [
+          {
+            "id": "line_parent",
+            "endpoint1": { "connectedTo": "agent_root" },
+            "endpoint2": { "connectedTo": "agent_billing" },
+            "textAreas": [ { "text": "parent" } ]
+          },
+          {
+            "id": "line_handoff_billing",
+            "endpoint1": { "connectedTo": "agent_root" },
+            "endpoint2": { "connectedTo": "agent_billing" },
+            "textAreas": [ { "text": "[MAY][MODEL] hand off when billing goal; returns when resolved" } ]
+          },
+          {
+            "id": "line_calls_lookup",
+            "endpoint1": { "connectedTo": "agent_billing" },
+            "endpoint2": { "connectedTo": "tool_lookup" },
+            "textAreas": [ { "text": "calls tool" } ]
+          },
+          {
+            "id": "line_calls_write",
+            "endpoint1": { "connectedTo": "agent_billing" },
+            "endpoint2": { "connectedTo": "tool_payment_update" },
+            "textAreas": [ { "text": "[MUST][RULE] calls tool" } ]
+          },
+          {
+            "id": "line_forbidden",
+            "endpoint1": { "connectedTo": "agent_root" },
+            "endpoint2": { "connectedTo": "tool_payment_update" },
+            "textAreas": [ { "text": "[MUST NOT] call update_payment before confirmation" } ]
+          },
+          {
+            "id": "line_observed",
+            "endpoint1": { "connectedTo": "agent_root" },
+            "endpoint2": { "connectedTo": "agent_billing" },
+            "textAreas": [ { "text": "[OBSERVED] simulator trace" } ]
+          }
+        ],
+        "groups": [
+          { "id": "group1", "title": "Policy Area", "shapes": ["agent_root", "agent_billing"] }
+        ],
+        "layers": [
+          { "id": "layer1", "title": "Base Layout" }
+        ]
+      }
+    }
+  ]
+}

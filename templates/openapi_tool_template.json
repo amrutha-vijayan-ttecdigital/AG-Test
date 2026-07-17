@@ -1,0 +1,86 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Greenfield Account API",
+    "description": "Generic API for retrieving customer profile details and balances. Configured for CX Agent Studio integration.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/accounts/{accountId}": {
+      "get": {
+        "summary": "Retrieve customer account profile",
+        "description": "Fetches active subscriptions, balance, and account type.",
+        "operationId": "getAccountProfile",
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the customer account",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-ces-session-context",
+            "in": "header",
+            "required": false,
+            "description": "CX Agent Studio automatic session context variable injection (Base64 encoded JSON of session state)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful retrieval of customer account profile",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountProfile"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized/Invalid credentials"
+          },
+          "404": {
+            "description": "Account not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AccountProfile": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string"
+          },
+          "customerName": {
+            "type": "string"
+          },
+          "accountType": {
+            "type": "string",
+            "enum": ["consumer", "business", "government"]
+          },
+          "balance": {
+            "type": "number",
+            "format": "float"
+          },
+          "dueDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": ["accountId", "customerName", "accountType", "balance"]
+      }
+    }
+  }
+}

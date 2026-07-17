@@ -1,0 +1,79 @@
+<!-- House-style starter template. Copy the <defs> verbatim; each element below is
+     one canonical example to adapt (coordinates are illustrative). -->
+<svg viewBox="0 0 1920 900" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2.2" flood-color="#3C4043" flood-opacity="0.18"/>
+    </filter>
+    <marker id="aBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A73E8"/>
+    </marker>
+    <marker id="aGray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5F6368"/>
+    </marker>
+    <marker id="aAmber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#E37400"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="900" fill="#FFFFFF"/>
+
+  <!-- Title block -->
+  <text x="40" y="54" font-size="29" font-weight="700" fill="#202124">Diagram Title</text>
+  <text x="40" y="84" font-size="15" fill="#5F6368">Context line &#183; A &#8594; B &#8594; C</text>
+
+  <!-- Legend (only rows for styles actually used) -->
+  <rect x="1280" y="26" width="600" height="78" rx="10" fill="#FFFFFF" stroke="#DADCE0" stroke-width="1.5"/>
+  <line x1="1302" y1="52" x2="1342" y2="52" stroke="#1A73E8" stroke-width="2.5" marker-end="url(#aBlue)"/>
+  <text x="1352" y="56" font-size="12.5" fill="#3C4043">Request path</text>
+  <line x1="1470" y1="52" x2="1510" y2="52" stroke="#5F6368" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#aGray)"/>
+  <text x="1520" y="56" font-size="12.5" fill="#3C4043">Response path</text>
+  <line x1="1302" y1="80" x2="1342" y2="80" stroke="#E37400" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#aAmber)"/>
+  <text x="1352" y="84" font-size="12.5" fill="#3C4043">Logging &amp; analytics</text>
+  <circle cx="1492" cy="80" r="10" fill="#174EA6"/>
+  <text x="1492" y="84.5" font-size="11.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">n</text>
+  <text x="1512" y="84" font-size="12.5" fill="#3C4043">Step</text>
+
+  <!-- Zone (primary role) -->
+  <rect x="400" y="160" width="620" height="400" rx="16" fill="#EEF4FE" stroke="#4285F4" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="424" y="192" font-size="13" font-weight="700" letter-spacing="1.5" fill="#1967D2">ZONE NAME &#8212; QUALIFIER</text>
+
+  <!-- Component box with accent bar (inside zone) -->
+  <rect x="440" y="240" width="250" height="170" rx="10" fill="#FFFFFF" stroke="#DADCE0" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="440" y="240" width="6" height="170" rx="3" fill="#4285F4"/>
+  <text x="462" y="272" font-size="15" font-weight="700" fill="#202124">Component Name</text>
+  <text x="462" y="298" font-size="12" fill="#5F6368">First descriptor line</text>
+  <text x="462" y="315" font-size="12" fill="#5F6368">second descriptor line</text>
+
+  <!-- Corner step badge overlapping a box's top-left corner -->
+  <circle cx="440" cy="240" r="14" fill="#174EA6"/>
+  <text x="440" y="245.5" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+
+  <!-- Request arrow with midpoint badge -->
+  <line x1="690" y1="325" x2="896" y2="325" stroke="#1A73E8" stroke-width="2.5" marker-end="url(#aBlue)"/>
+  <circle cx="793" cy="325" r="14" fill="#174EA6"/>
+  <text x="793" y="330.5" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+
+  <!-- Parallel response arrow, offset ~55px, label below -->
+  <line x1="900" y1="380" x2="694" y2="380" stroke="#5F6368" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#aGray)"/>
+  <text x="795" y="402" font-size="11.5" fill="#5F6368" text-anchor="middle">response label</text>
+
+  <!-- Cross-boundary arrow label (in the inter-zone gap, above the arrow) -->
+  <text x="793" y="285" font-size="12" font-weight="700" fill="#3C4043" text-anchor="middle">mechanism (bold line)</text>
+  <text x="793" y="302" font-size="12" fill="#5F6368" text-anchor="middle">&#8212; qualifier line &#8212;</text>
+
+  <!-- Collapsed repeat placeholder -->
+  <rect x="900" y="440" width="280" height="105" rx="12" fill="#FFFFFF" fill-opacity="0.75" stroke="#34A853" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="922" y="470" font-size="14" font-weight="700" fill="#202124">Repeat Instance</text>
+  <text x="922" y="493" font-size="11.5" fill="#5F6368">Same blueprint: a &#183; b &#183; c</text>
+
+  <!-- Step key panel (two columns; height = 60 + 32*ceil(N/2)) -->
+  <rect x="40" y="620" width="1840" height="124" rx="14" fill="#FFFFFF" stroke="#DADCE0" stroke-width="1.5"/>
+  <text x="64" y="650" font-size="13" font-weight="700" letter-spacing="1.5" fill="#5F6368">STEP KEY</text>
+  <circle cx="80" cy="678" r="11" fill="#174EA6"/>
+  <text x="80" y="682.5" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="102" y="683" font-size="12.5" fill="#5F6368"><tspan font-weight="700" fill="#202124">Lead phrase</tspan> &#8212; one-line explanation in gray</text>
+  <circle cx="975" cy="678" r="11" fill="#174EA6"/>
+  <text x="975" y="682.5" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text x="997" y="683" font-size="12.5" fill="#5F6368"><tspan font-weight="700" fill="#202124">Lead phrase</tspan> &#8212; one-line explanation in gray</text>
+</svg>
