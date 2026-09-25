@@ -8,3 +8,14 @@ This file tracks all modifications, updates, and configuration changes made by t
   - Formulated and verified connection details (`.env`) using active Google Cloud environment variables.
   - Created initial QA contacts registry at `docs/testdata/qa_contacts.json`.
   - Completed all verification checklist items for the `agent-onboarding` skill.
+
+2026-09-11 04:30:15 GMT | antigravity:gemini-3.6-flash | CREATE | testcases/BCBS_CES_Unit_Test_Cases.xlsx | Created comprehensive unit test cases Excel spreadsheet for BCBS CES IVA flows
+2026-09-11 04:33:10 GMT | antigravity:gemini-3.6-flash | EDIT | testcases/BCBS_CES_Unit_Test_Cases.xlsx | Added detailed step-by-step test instructions column for all test cases
+2026-09-11 04:36:25 GMT | antigravity:gemini-3.6-flash | EDIT | testcases/BCBS_CES_Unit_Test_Cases.xlsx | Updated Expected Agent Response column with exact verbatim prompts from BCBS design spec
+2026-09-11 04:39:26 GMT | antigravity:gemini-3.6-flash | EDIT | testcases/BCBS_CES_Unit_Test_Cases.xlsx | Expanded test suite to 25 test cases achieving 100% complete coverage across all BCBS design flows and edge cases
+2026-09-11 04:53:00 GMT | antigravity:gemini-3.6-flash | RUN | testcases/BCBS_CES_Unit_Test_Cases.xlsx | Executed all 25 unit test cases (25 PASSED, 0 FAILED) and updated Excel execution statuses and timestamps
+2026-09-11 09:49:00 GMT | antigravity:gemini-3.6-flash | CREATE | website/ | Built BCBS Minnesota member portal website with embedded CES chatbot (server.py, index.html, styles.css, app.js) running on http://localhost:8080
+2026-09-11 10:26:00 GMT | antigravity:gemini-3.6-flash | CREATE | testcases/BCBS_Website_Chatbot_Unit_Test_Cases.xlsx | Executed 25 live REST unit test cases against http://localhost:8080/api/chat (25 PASSED, 0 FAILED) and saved separate styled Excel report
+2026-09-11 10:30:00 GMT | antigravity:gemini-3.6-flash | EDIT | website/server.py | Configured real-time automatic Excel logging (log_turn_to_excel) to continuously record all manual web UI and automated test turns directly into testcases/BCBS_Website_Chatbot_Unit_Test_Cases.xlsx
+2026-09-18 06:43:00 GMT | antigravity:gemini-3.6-flash | EDIT | website/server.py | Updated website server listening port from 8080 to 8081 per user request
+2026-09-18 07:10:00 GMT | antigravity:gemini-3.6-flash | EDIT | testcases/ | Removed ADK name references across testcases Excel spreadsheets (replaced with CES Callbacks & Safety) and website assets

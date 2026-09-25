@@ -1,0 +1,15 @@
+{
+  "testers": [
+    {
+      "name": "Amrutha Vijayan",
+      "email": "amrutha.vijayan@jbhunt.com",
+      "role": "Lead Developer/QA"
+    }
+  ],
+  "test_phone_numbers": [
+    {
+      "description": "Standard Voice Gateway Test Number",
+      "phone_number": "+18005550199"
+    }
+  ]
+}

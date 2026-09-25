@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Cross and Blue Shield of Minnesota — Member Portal</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Top Nav Header -->
+    <header class="bcbs-header">
+        <div class="header-container">
+            <div class="logo-area">
+                <div class="cross-shield-logo">
+                    <span class="cross">✚</span><span class="shield">🛡️</span>
+                </div>
+                <div class="brand-titles">
+                    <span class="brand-name">BlueCross BlueShield</span>
+                    <span class="brand-sub">Minnesota</span>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <a href="#" class="active">Medicare Plans</a>
+                <a href="#">Prescription Drugs</a>
+                <a href="#">Claims & ID Cards</a>
+                <a href="#">Find a Doctor</a>
+            </nav>
+            <div class="header-controls">
+                <div class="hours-toggle-wrapper">
+                    <span class="toggle-label">Business Hours Status:</span>
+                    <label class="switch">
+                        <input type="checkbox" id="businessHoursToggle" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    <span id="hoursStatusLabel" class="status-open">Open (8am - 8pm)</span>
+                </div>
+                <button class="member-login-btn">Member Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h1>Medicare Coverage Designed for Minnesotans</h1>
+            <p>Explore 2027 Medicare Advantage plans, look up prescription drug tiers, or speak with a local advisor today.</p>
+            <div class="hero-actions">
+                <button class="primary-hero-btn" onclick="openChatWithPrompt('Check Plan Eligibility')">Check Plan Eligibility by Zip</button>
+                <button class="secondary-hero-btn" onclick="openChatWithPrompt('Look Up Prescription Drug')">Look Up Prescription Coverage</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Quick Cards -->
+    <section class="portal-services">
+        <div class="services-container">
+            <h2>How Can We Help You Today?</h2>
+            <div class="services-grid">
+                <div class="service-card" onclick="openChatWithPrompt('Check Medicare Plans')">
+                    <div class="card-icon">🗺️</div>
+                    <h3>Zip Code Plan Lookup</h3>
+                    <p>Compare Medicare Advantage deductible, OOP max, and estimated annual costs for your county.</p>
+                    <span class="card-link">Explore Plans &rarr;</span>
+                </div>
+
+                <div class="service-card" onclick="openChatWithPrompt('Look Up Prescription Drug')">
+                    <div class="card-icon">💊</div>
+                    <h3>Prescription Drug Search</h3>
+                    <p>Search generic and brand name medications to view formulary drug tiers and copay costs.</p>
+                    <span class="card-link">Check Drug Tiers &rarr;</span>
+                </div>
+
+                <div class="service-card" onclick="openChatWithPrompt('Claims & ID Cards')">
+                    <div class="card-icon">💳</div>
+                    <h3>Claims & ID Card Services</h3>
+                    <p>Get information on recent claims, coverage status, or requesting replacement member ID cards.</p>
+                    <span class="card-link">View Claims Info &rarr;</span>
+                </div>
+
+                <div class="service-card" onclick="openChatWithPrompt('Speak with Live Agent')">
+                    <div class="card-icon">🎧</div>
+                    <h3>Talk to a Medicare Advisor</h3>
+                    <p>Connect directly with a licensed Blue Cross Minnesota representative or schedule a callback.</p>
+                    <span class="card-link">Connect Now &rarr;</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Chatbot Widget Button -->
+    <div class="chat-widget-launcher" id="chatLauncher" onclick="toggleChatWidget()">
+        <div class="launcher-badge">Medicare Assistant</div>
+        <div class="launcher-icon">💬</div>
+    </div>
+
+    <!-- Embedded Chatbot Window Container -->
+    <div class="chat-widget-window" id="chatWindow">
+        <!-- Chat Header -->
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="agent-avatar">🤖</div>
+                <div class="agent-details">
+                    <div class="agent-title">BCBS Medicare Virtual Assistant</div>
+                    <div class="agent-status"><span class="online-dot"></span> Powered by Google CES</div>
+                </div>
+            </div>
+            <div class="chat-header-actions">
+                <button class="minimize-btn" onclick="toggleChatWidget()" title="Minimize">─</button>
+            </div>
+        </div>
+
+        <!-- Chat Body (Messages Thread) -->
+        <div class="chat-messages" id="chatMessages">
+            <!-- Dynamic Messages Inserted Here via JS -->
+        </div>
+
+        <!-- Quick Reply Chips Area -->
+        <div class="chat-chips-area" id="chatChipsArea">
+            <!-- Dynamic Chips Inserted Here via JS -->
+        </div>
+
+        <!-- Chat Input Form -->
+        <div class="chat-input-area">
+            <form id="chatForm" onsubmit="handleUserSubmit(event)">
+                <input type="text" id="chatInput" placeholder="Type a message or zip code..." autocomplete="off">
+                <button type="submit" id="sendBtn" class="send-btn">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 1z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Live Agent Escalation Transfer Modal -->
+    <div class="modal-overlay" id="transferModal">
+        <div class="transfer-modal-card">
+            <div class="modal-header">
+                <div class="transfer-icon">📞</div>
+                <h3>Connecting to Live Medicare Advisor</h3>
+            </div>
+            <div class="modal-body">
+                <p>Transferring your session to Blue Cross Minnesota Telephone Gateway via <strong>SIP REFER / PHONE_GATEWAY_TRANSFER</strong>.</p>
+                <div class="transfer-details">
+                    <div class="detail-row"><span>Target Toll-Free Number:</span> <strong>+1-800-555-0199</strong></div>
+                    <div class="detail-row"><span>Transfer Reason:</span> <span id="transferReason">Explicit Escalation Request</span></div>
+                    <div class="detail-row"><span>Originating Trunk:</span> <strong>Active (bcbs-mn-poth)</strong></div>
+                </div>
+                <div class="calling-animation">
+                    <span class="pulse-ring"></span>
+                    <span class="pulse-ring delay-1"></span>
+                    <span class="pulse-ring delay-2"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="close-modal-btn" onclick="closeTransferModal()">Close Transfer Modal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bcbs-footer">
+        <div class="footer-container">
+            <p>© 2026 Blue Cross and Blue Shield of Minnesota and Blue Plus. All rights reserved.</p>
+            <p class="footer-notice">Blue Cross and Blue Shield of Minnesota is an independent licensee of the Blue Cross and Blue Shield Association.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
